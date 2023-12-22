@@ -1,0 +1,15 @@
+get the height from the user as variable h
+if the height is less then 1 or more then 8
+    ask the user for another value
+loop the lines
+for i = 1 to i = h do
+    for j = 1 to j = h - i + 1 do
+        print " "
+    end for
+
+    for j = h - i + 1 to j = h do
+        print "#"
+    end for
+
+    print newline
+end for

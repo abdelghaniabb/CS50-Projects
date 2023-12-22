@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            function change(answer, question) {
+                if (answer == "iot2") {
+                    document.getElementById(answer).style["background-color"] = "green";
+                    document.getElementById(question).innerHTML = "Correct!";
+                }
+                else {
+                    document.getElementById(answer).style["background-color"] = "red";
+                    document.getElementById(question).innerHTML = "Incorrect";
+                }
+            }
+
+
+            function check() {
+                if (document.getElementById('ai').value === 'a') {
+                    document.getElementById('ai').style["background-color"] = "green";
+                    document.getElementById('Q2').innerHTML = "Correct!";
+                }
+                else {
+                    document.getElementById('ai').style["background-color"] = "red";
+                    document.getElementById('Q2').innerHTML = "Incorrect";
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>what's the IoT stand for?</h3>
+                <p id="Q1"></p>
+                <button id="iot1" onclick="change(id, 'Q1')">Inerconected objects</button>
+                <button id='iot2' onclick="change(id, 'Q1')">Internet of Things</button>
+                <button id='iot3' onclick="change(id, 'Q1')">Inside of The city</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>what's AI stand for?</h3>
+                <p id="Q2"></p>
+                <input id="ai" type="text">
+                <button onclick="check()">check</button>
+            </div>
+        </div>
+    </body>
+</html>
