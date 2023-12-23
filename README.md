@@ -1,6 +1,10 @@
 # CS50's Introduction to Computer Science
 
-- https://learning.edx.org/course/course-v1:HarvardX+CS50+X/home
+* [Link](https://learning.edx.org/course/course-v1:HarvardX+CS50+X/home)
+* [cs50.dev](https://symmetrical-guide-9766xv445wjhr4q.github.dev/?autoStart=true&folder=%2Fworkspaces%2F123995767&vscodeChannel=stable)
+* [submit.cs50.io](https://submit.cs50.io/users/abdelghaniabb)
+
+
 - Watch Week 0's lecture. Submit Problem Set 0.
 - Watch Week 1's lecture and, optionally, shorts and section. Submit Lab 1 and Problem Set 1.
 - Watch Week 2's lecture and, optionally, shorts and section. Submit Lab 2 and Problem Set 2.
@@ -32,8 +36,10 @@
 
 ## week 8 - HTML, CSS, JavaScript
 - Lab 8: Trivia
+* Problem 8: [Homepage](./homepage/)
 
-- Watch Week 8's lecture and, optionally, shorts and section. Submit Lab 8 and Problem Set 8.
+
+
 - Watch a special lecture on Cybersecurity.
 - Watch Week 9's lecture and, optionally, shorts and section. Submit Lab 9 and Problem Set 9.
 - Watch Week 10's lecture.

@@ -8,7 +8,12 @@ body {
     background-color: bisque;
     padding: 30px auto;
 }
-
+.box {
+    width: 90%;
+    margin: 5%;
+    background-color: aqua;
+    justify-content: center;
+}
 .box_up {
     width: 90%;
     margin: 5%;
@@ -35,15 +40,15 @@ article img{
     width: 90%;
     margin: 5%;
     margin-top: 0;
-    padding-top: 30px;
+    padding: 30px;
     background-color: aqua;
     justify-content: center;
     display: flex;
 }
-.box_bottom article {
-    display: inline-block;
-    width: 45%;
-    margin: auto;
+
+.box_bottom img {
+    width: 90px;
+    padding: 10px;
 }
 
 .center {
@@ -53,4 +58,16 @@ article img{
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    text-align: center;
   }
+
+  .box_main {
+    width: 90%;
+    margin: 5%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 30px;
+    background-color: aqua;
+    justify-content: center;
+    display: flex;
+}
