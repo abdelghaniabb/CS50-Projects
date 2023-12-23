@@ -30,15 +30,17 @@
 - Readability
 - DNA
 ## week 7 SQL
-- Lab 7: Songs
-- Movies
-- Fiftyville (not yet)
+- Lab 7: [Songs](./songs/)
+- Problem Set 7
+    - [Movies](./movies/)
+    - [Fiftyville](./fiftyville/) (not yet)
 
 ## week 8 - HTML, CSS, JavaScript
-- Lab 8: Trivia
-* Problem 8: [Homepage](./homepage/)
+- Lab 8: [Trivia](./trivia/)
+* Problem Set 8: [Homepage](./homepage/)
 
 
+## not yet
 
 - Watch a special lecture on Cybersecurity.
 - Watch Week 9's lecture and, optionally, shorts and section. Submit Lab 9 and Problem Set 9.
