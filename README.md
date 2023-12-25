@@ -27,12 +27,13 @@
 - speller
 ## Week 6 Python
 - Lab 6: World Cup
-- Hello
-- Mario less and more
-- Cash
-- Credit
-- Readability
-- DNA
+- Problem Set 6:
+    - Hello
+    - Mario less and more
+    - Cash
+    - Credit
+    - Readability
+    - [DNA](./dna/)
 ## week 7 SQL
 - Lab 7: [Songs](./songs/)
 - Problem Set 7
