@@ -42,6 +42,21 @@ def index():
 @login_required
 def buy():
     """Buy shares of stock"""
+    if request.method == "POST":
+
+        symbol = request.form.get("symbol")
+        shares = request.form.get("shares")
+
+        if not symbol or not shares:
+            return apology("Blink input")
+
+        result = lookup(symbol)
+        if result is None:
+            return apology("symbol does not exist")
+        if not isinstance(shares, int) or shares < 0:
+            return apology("shares is not a positive integer")
+
+        return redirect("/")
     return apology("TODO")
 
 
@@ -103,13 +118,53 @@ def logout():
 @login_required
 def quote():
     """Get stock quote."""
-    return apology("TODO")
+    if request.method == "POST":
+
+        symbol = request.form.get("symbol")
+        if not symbol:
+            return apology("No symbol entered")
+
+        result = lookup(symbol)
+        if result is None:
+            return apology("No symbol found")
+        
+        name = result['name']
+        price = result['price']
+        symbol = result['symbol']
+        return render_template("quoted.html", name=name, price=price, symbol=symbol)
+    else:
+        return render_template("quote.html")
+
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
-    return apology("TODO")
+    if request.method == "POST":
+
+        username = request.form.get("username")
+        password = request.form.get("password")
+        confirmation = request.form.get("confirmation")
+
+        if not username:
+            return apology("No username entered")
+        users_dict = db.execute("SELECT username FROM users")
+        users = list()
+        for item in users_dict:
+            users.append(item['username'])
+        if username in users:
+            return apology("username already exists")
+        if not password or not confirmation:
+            return apology("No password entered")
+        if password != confirmation:
+            return apology("passwords do not match")
+
+        _hash = generate_password_hash(password)
+        db.execute("INSERT INTO users (username, hash) VALUES ('{}', '{}');".format(username, _hash))
+    else:
+        return render_template("register.html")
+
+    return redirect("/")
 
 
 @app.route("/sell", methods=["GET", "POST"])
