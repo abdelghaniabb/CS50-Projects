@@ -6,6 +6,7 @@ from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required, lookup, usd
+from datetime import datetime
 
 # Configure application
 app = Flask(__name__)
@@ -35,7 +36,16 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    return apology("TODO")
+    # user’s current cash balance along with a grand total 
+    user_id = int(session.get("user_id"))
+    user_cash = db.execute("SELECT cash FROM users WHERE id = {}".format(user_id))[0]['cash']
+    stock_total_value = db.execute("SELECT SUM(price) AS sum FROM purchases WHERE user_id = {};".format(user_id))[0]['sum']
+
+    # stocks the user owns
+    stock_data = db.execute("SELECT symbol, price, shares, total_price FROM purchases WHERE user_id = {};".format(user_id))
+    
+    return render_template("index.html", user_cash=usd(user_cash), stock_total_value=usd(stock_total_value), stock_data=stock_data)
+    return apology("--TODO")
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -47,17 +57,39 @@ def buy():
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
 
+        # check statements
         if not symbol or not shares:
-            return apology("Blink input")
+            return apology("Blank input")
 
         result = lookup(symbol)
         if result is None:
             return apology("symbol does not exist")
-        if not isinstance(shares, int) or shares < 0:
+        if not shares.isdigit():
+            return apology("shares is not an integer")
+        if int(shares) < 0:
             return apology("shares is not a positive integer")
 
+        # check if the user can afford the number of shares 
+        user_id = int(session.get("user_id"))
+        user_cash = db.execute("SELECT cash FROM users WHERE id = {}".format(user_id))[0]['cash']
+        symbol_price = lookup(symbol)['price']
+        full_price = symbol_price * int(shares)
+        date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        if full_price > user_cash:
+            return apology("can't afford that number of shars")
+        
+        # save the purchases information
+        data = "({}, '{}', {}, {}, {}, '{}')".format(user_id, symbol, symbol_price, int(shares), full_price, date)
+        db.execute("INSERT INTO purchases (user_id, symbol, price, shares, total_price, date) VALUES {};".format(data))
+
+        # change the cash value for the user by reducing the user's payment
+        db.execute("UPDATE users SET cash = {} WHERE id = {};".format(user_cash - full_price, user_id))
+        
         return redirect("/")
-    return apology("TODO")
+    else:
+        return render_template("buy.html")
+    
 
 
 @app.route("/history")
@@ -171,4 +203,8 @@ def register():
 @login_required
 def sell():
     """Sell shares of stock"""
-    return apology("TODO")
+    if request.method == "POST":
+        pass
+    else:
+        return render_template("sell.html")
+    return apology("2TODO")

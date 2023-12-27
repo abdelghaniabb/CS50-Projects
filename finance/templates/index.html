@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    home
+{% endblock %}
+
+{% block main %}
+<table>
+    <tr>
+        <th>current cash balance </th>
+        <th>grand total</th>
+    </tr>
+    <tr>
+        <td>{{ user_cash }}</td>
+        <td>{{ stock_total_value }}</td>
+    </tr>
+</table>
+<h2>stocks the user owns</h2>
+<table>
+    <thead>
+        <tr>
+            <th>stocks</th>
+            <th> numbers of shares </th>
+            <th>price of each stock</th>
+            <th>total value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stock_data %}
+        <tr>
+            <td>{{ stock['symbol'] }}</td>
+            <td>{{ stock['shares'] }}</td>
+            <td>{{ stock['price'] }}</td>
+            <td>{{ stock['total_price'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
