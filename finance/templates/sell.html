@@ -5,14 +5,15 @@
 {% endblock %}
 
 {% block main %}
-    <form action="/buy" method="post">
+    <h2>Sell shares</h2>
+    <form action="/sell" method="post">
         <div class="mb-3">
             <select class="form-control mx-auto w-auto" name="symbol" id="symbol">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-              </select>
+                <option value="" disabled selected hidden>Please Choose a Symbol</option>
+                {% for symbol in symbols %}
+                    <option value="{{ symbol['symbol'] }}">{{ symbol["symbol"] }}</option>
+                {% endfor %}
+            </select>
         </div>
         <div class="mb-3">
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="shares" type="text">

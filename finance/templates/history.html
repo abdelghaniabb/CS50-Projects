@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    home
+{% endblock %}
+
+{% block main %}
+
+<h1>History</h1>
+<table>
+    <thead>
+        <tr>
+            <th> transaction </th>
+            <th>stock's symbol</th>
+            <th>price</th>
+            <th>number of shares</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in data %}
+            <tr>
+                <td>{{ item['trans'] }}</td>
+                <td>{{ item['symbol'] }}</td>
+                <td>{{ item['price'] }}</td>
+                <td>{{ item['shares'] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

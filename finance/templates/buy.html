@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block main %}
+    <h2>Buy stocks</h2>
     <form action="/buy" method="post">
         <div class="mb-3">
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol" type="text">
@@ -15,4 +16,3 @@
         <button class="btn btn-primary" type="submit">Buy</button>
     </form>
 {% endblock %}
-

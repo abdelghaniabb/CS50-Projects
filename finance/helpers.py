@@ -76,3 +76,24 @@ def lookup(symbol):
 def usd(value):
     """Format value as USD."""
     return f"${value:,.2f}"
+
+def strong_password(password):
+    """Check for a strong password"""
+    if len(password) < 4:
+        return False
+
+    check_number = False
+    check_char = False
+    check_symbol = False
+
+    special_characters = """!@#$%^&*()-+?_=,<>/"""
+    for char in password:
+        if char.isdigit():
+            check_number = True
+        if char.isalpha():
+            check_char = True
+        if char in special_characters:
+            check_symbol = True
+    if check_char and check_number and check_symbol:
+        return True
+    return False
