@@ -4,8 +4,9 @@ from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 from flask_session import Session
 from country_list import countries_for_language
+from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import login_required
+from helpers import login_required, apology, strong_password
 
 # Configure application
 app = Flask(__name__)
@@ -81,12 +82,41 @@ def logout():
     return redirect("/")
 
 
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
     if request.method == "POST":
+        # get registration information
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
+        establishment = request.form.get("establishment")
+        sector = request.form.get("sector")
+        phone = request.form.get("phone")
+        contry = request.form.get("contry")
+        email = request.form.get("email")
+        password = request.form.get("password")
+        confirmation = request.form.get("confirmation")
 
-        pass
+        # check registration information
+        users_dict = db.execute("SELECT username FROM users")
+        users = list()
+        for item in users_dict:
+            users.append(item['username'])
+
+        if email in users:
+            return apology("username already exists")
+        if password != confirmation:
+            return apology("passwords do not match")
+        if not strong_password(password):
+            return apology("Not a Strong password")
+
+        # save registration information
+        _hash = generate_password_hash(password)
+        db.execute("INSERT INTO users (username, hash) VALUES ('{}', '{}');".format(email, _hash))
+        db.execute("INSERT INTO users_information (first_name, last_name, email, establishment, sector, phone, contry) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}');".format(first_name, last_name, email, establishment, sector, phone, contry))
+
+        return render_template("registered.html", first_name=first_name)
     else:
         countries = list()
         for key, value in dict(countries_for_language('en')).items():
@@ -104,4 +134,4 @@ def index():
         pass
 
     else:
-        pass
+        return render_template("index.html")
