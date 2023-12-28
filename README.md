@@ -7,24 +7,42 @@
 
 
 ## Week 0 Scratch
+- Problem Set 0: Scratch (not yet)
+[link](https://cs50.harvard.edu/x/2023/psets/0/scratch/)
+
 ## Week 1 C
+- Lab 1: Population Growth
+- Problem Set 1:
+    - Hello
+    - Mario both less and more
+    - Cash 
+    - Credit (not yet)
+
 ## Week 2 Arrays
-- Watch Week 0's lecture. Submit Problem Set 0.
-- Watch Week 1's lecture and, optionally, shorts and section. Submit Lab 1 and Problem Set 1.
-- Watch Week 2's lecture and, optionally, shorts and section. Submit Lab 2 and Problem Set 2.
+- Lab 2: Scrabble 
+- Problem Set 2
+    - Readability
+    - Bulbs
+    - Caesar
+    - Substitution (not yet)
+    - Wordle50 (not yet)
 ## Week 3 Algorithms
 - Lab 3: Sort
-- Plurality
-- Runoff
-- Tideman (not finished)
+- Problem Set 3:
+    - Plurality
+    - Runoff
+    - Tideman (not finished)
 ## Week 4 Memory
-- Lab 4: Smiley Volume 
-- two version of Filter
-- Recover
-- Reverse (not yet)
+- Lab 4: 
+    - Smiley 
+    - Volume 
+- Problem Set 4:
+    - two version of Filter
+    - Recover
+    - Reverse (not yet)
 ## Week 5 Data Structures
 - Lab 5: Inheritance (done with 4/7)
-- speller
+- Problem Set 5: speller
 ## Week 6 Python
 - Lab 6: World Cup
 - Problem Set 6:
