@@ -125,13 +125,50 @@ def register():
         return render_template("register.html", countries=countries)
 
 
+@app.route("/settings", methods=["GET", "POST"])
+@login_required
+def settings():
+    """account settings"""
+    user_id = int(session.get("user_id"))
+    if request.method == "POST":
+        # Get user's information for the registration
+        username = request.form.get("username")
+        password = request.form.get("password")
+        confirmation = request.form.get("confirmation")
+
+        # Check statements
+        if not username:
+            return apology("No username entered")
+        
+        users_dict = db.execute("SELECT username FROM users WHERE id = {};".format(user_id))
+
+        if username != users_dict[0]['username']:
+            return apology("wrong username")
+        if not password or not confirmation:
+            return apology("No password entered")
+        if password != confirmation:
+            return apology("passwords do not match")
+        if not strong_password(password):
+            return apology("Not a Strong password")
+
+        # save registration information
+        _hash = generate_password_hash(password)
+        db.execute("UPDATE users SET hash = '{}' WHERE id = {};".format(_hash, user_id))
+
+        return render_template("password.html")
+    
+    else:
+        return render_template("settings.html")
+
+
 
 @app.route("/")
 @login_required
 def index():
-    if request.method == "POST":
+    return render_template("index.html")
 
-        pass
 
-    else:
-        return render_template("index.html")
+@app.route("/light")
+@login_required
+def light():
+    return render_template("light.html")
