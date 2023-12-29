@@ -6,7 +6,9 @@ from flask_session import Session
 from country_list import countries_for_language
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import login_required, apology, strong_password
+
+from helpers import login_required, apology, strong_password, change_gpio, get_state_gpio
+
 
 
 # Configure application
@@ -177,12 +179,19 @@ def light():
 @app.route("/gpio1", methods=["GET", "POST"])
 @login_required
 def gpio1():
-    
     if request.method == "POST":
-        status = True
-        return str(status)
+        if request.form.get('status') == "true":
+            """turn ON the gpio 15"""
+            change_gpio(15, 1)
+        else:
+            change_gpio(15, 0)
+        
+        return "done"
     else:
-        status = True
+        if get_state_gpio(15):
+            status = "true"
+        else:
+            status = "false"
         return str(status)
 
 @app.route("/gpio2", methods=["GET", "POST"])
@@ -190,23 +199,35 @@ def gpio1():
 def gpio2():
     if request.method == "POST":
         if request.form.get('status') == "true":
-            db.execute("INSERT INTO test (a,b) VALUES (2, 1);")
+            """turn ON the gpio 16"""
+            change_gpio(16, 1)
         else:
-            db.execute("INSERT INTO test (a,b) VALUES (2, 0);")
-       
+            change_gpio(16, 0)
         
         return "done"
     else:
-        status = "true"
+        if get_state_gpio(16):
+            status = "true"
+        else:
+            status = "false"
         return str(status)
+
 @app.route("/gpio3", methods=["GET", "POST"])
 @login_required
 def gpio3():
     if request.method == "POST":
-        status = True
-        return str(status)
+        if request.form.get('status') == "true":
+            """turn ON the gpio 22"""
+            change_gpio(22, 1)
+        else:
+            change_gpio(22, 0)
+        
+        return "done"
     else:
-        status = False
+        if get_state_gpio(22):
+            status = "true"
+        else:
+            status = "false"
         return str(status)
 
 
@@ -225,3 +246,20 @@ def temperature():
 def camera():
     """live camera"""
     return render_template("camera.html")
+
+@app.route("/history", methods=["GET", "POST"])
+@login_required
+def history():
+    """history of the temperature"""
+    if request.method == "POST":
+        date = request.form.get("date")
+        if not date:
+            return apology("no date entered")
+        data = db.execute("SELECT temperature, humidity, date FROM temperature WHERE DATE(date) = '{}' ORDER BY date DESC;".format(date))
+        return render_template("history.html", data=data)
+    else:
+        data = db.execute("SELECT temperature, humidity, date FROM temperature ORDER BY date DESC LIMIT 30;")
+        return render_template("history.html", data=data)
+
+
+app.run(host='0.0.0.0', port=None)

@@ -1,6 +1,6 @@
 from flask import redirect, render_template, session
 from functools import wraps
-
+import RPi.GPIO as GPIO
 
 def login_required(f):
     """
@@ -50,3 +50,12 @@ def strong_password(password):
         return True
     return False
 
+def change_gpio(pin, status):
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(pin, GPIO.OUT)
+    GPIO.output(pin, status)
+
+def get_state_gpio(pin):
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(pin, GPIO.OUT)
+    return GPIO.input(pin)

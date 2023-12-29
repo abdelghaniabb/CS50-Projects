@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 
 from cs50 import SQL
@@ -30,5 +29,7 @@ def measure_temperature_DHT(DHT_PIN=21):
 
 while (True):
     humidity, temperature = measure_temperature_DHT()
-    date = database.now().strftime('%Y-%m-%d %H:%M:%S')
-    db.execute("INSERT INTO temperature (temperature, humidity, date) VALUES ({}, {}, {});".format(temperature, humidity, date))
+    date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    db.execute("INSERT INTO temperature (temperature, humidity, date) VALUES ({}, {}, '{}');".format(temperature, humidity, date))
+    time.sleep(60)
+    # db.execute("SELECT * FROM temperature;")
