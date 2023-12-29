@@ -8,6 +8,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import login_required, apology, strong_password
 
+
 # Configure application
 app = Flask(__name__)
 
@@ -172,3 +173,50 @@ def index():
 @login_required
 def light():
     return render_template("light.html")
+
+@app.route("/gpio1", methods=["GET", "POST"])
+@login_required
+def gpio1():
+    
+    if request.method == "POST":
+        status = True
+        return str(status)
+    else:
+        status = True
+        return str(status)
+
+@app.route("/gpio2", methods=["GET", "POST"])
+@login_required
+def gpio2():
+    if request.method == "POST":
+        status = True
+        return str(status)
+    else:
+        status = True
+        return str(status)
+@app.route("/gpio3", methods=["GET", "POST"])
+@login_required
+def gpio3():
+    if request.method == "POST":
+        status = True
+        return str(status)
+    else:
+        status = False
+        return str(status)
+
+
+@app.route("/temperature")
+@login_required
+def temperature():
+    """get the lab temperature"""
+    data = db.execute("SELECT temperature, humidity, date FROM temperature ORDER BY date DESC LIMIT 1;")
+    humidity = data[0]['humidity']
+    temperature = data[0]['temperature']
+    return render_template("temperature.html", humidity=humidity, temperature=temperature)
+
+
+@app.route("/camera")
+@login_required
+def camera():
+    """live camera"""
+    return render_template("camera.html")

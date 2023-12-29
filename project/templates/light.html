@@ -102,4 +102,48 @@
         </tr>
       </table>
     </div>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  initializeSwitch("gpio-switch-1", "/gpio1");
+  initializeSwitch("gpio-switch-2", "/gpio2");
+  initializeSwitch("gpio-switch-3", "/gpio3");
+});
+
+function initializeSwitch(switchId, phpFile) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", phpFile, true);
+  xhr.onload = function() {
+    if (xhr.readyState === xhr.DONE) {
+      if (xhr.status === 200) {
+        var status = xhr.responseText;
+        console.log(status)
+        document.getElementById(switchId).checked = (status === "true");
+      } else {
+        console.error("Failed to fetch GPIO status.");
+      }
+    }
+  };
+  xhr.send();
+
+  document.getElementById(switchId).addEventListener("change", function() {
+    var isChecked = this.checked;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", phpFile, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+    xhr.onload = function() {
+      if (xhr.readyState === xhr.DONE) {
+        if (xhr.status === 200) {
+          console.log("GPIO status updated successfully.");
+        } else {
+          console.error("Failed to update GPIO status.");
+        }
+      }
+    };
+    xhr.send("status=" + isChecked);
+  });
+}
+
+</script>
+
 {% endblock %}

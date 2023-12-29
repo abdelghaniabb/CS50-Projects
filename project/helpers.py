@@ -49,3 +49,4 @@ def strong_password(password):
     if check_char and check_number and check_symbol:
         return True
     return False
+
