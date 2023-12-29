@@ -117,7 +117,7 @@ function initializeSwitch(switchId, phpFile) {
     if (xhr.readyState === xhr.DONE) {
       if (xhr.status === 200) {
         var status = xhr.responseText;
-        console.log(status)
+        console.log("get " + status)
         document.getElementById(switchId).checked = (status === "true");
       } else {
         console.error("Failed to fetch GPIO status.");

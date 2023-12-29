@@ -1,18 +1,9 @@
-import smtplib
+from cs50 import SQL
+import RPi.GPIO as GPIO
 
-sender = 'from@example.com'
-receivers = ['abdobenbraim00011@gmail.com']
-message = """From: From Person <from@example.com>
-To: To Person <to@example.com>
-Subject: SMTP email example
+# Configure CS50 Library to use SQLite database
+db = SQL("sqlite:///information.db")
 
-
-This is a test message.
-"""
-
-try:
-    smtpObj = smtplib.SMTP('localhost')
-    smtpObj.sendmail(sender, receivers, message)         
-    print("Successfully sent email")
-except :
-    pass
+db.execute("""CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    a NUMERIC,
+    b NUMERIC);""")

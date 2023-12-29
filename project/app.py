@@ -189,10 +189,15 @@ def gpio1():
 @login_required
 def gpio2():
     if request.method == "POST":
-        status = True
-        return str(status)
+        if request.form.get('status') == "true":
+            db.execute("INSERT INTO test (a,b) VALUES (2, 1);")
+        else:
+            db.execute("INSERT INTO test (a,b) VALUES (2, 0);")
+       
+        
+        return "done"
     else:
-        status = True
+        status = "true"
         return str(status)
 @app.route("/gpio3", methods=["GET", "POST"])
 @login_required
