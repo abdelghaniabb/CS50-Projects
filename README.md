@@ -3,29 +3,31 @@
 * [Link](https://learning.edx.org/course/course-v1:HarvardX+CS50+X/home)
 * [Video](https://www.youtube.com/watch?v=8mAITcNt710&t=88054s)
 * [cs50.dev](https://symmetrical-guide-9766xv445wjhr4q.github.dev/?autoStart=true&folder=%2Fworkspaces%2F123995767&vscodeChannel=stable)
-* [submit.cs50.io](https://submit.cs50.io/users/abdelghaniabb)
+* [submit.cs50.io](https://submit.cs50.io/courses/1/)
 
 
-## Week 0 Scratch
-- Problem Set 0: Scratch (not yet)
-[link](https://cs50.harvard.edu/x/2023/psets/0/scratch/)
+## Tasks
 
-## Week 1 C
-- Lab 1: Population Growth
-- Problem Set 1:
-    - Hello
-    - Mario both less and more
-    - Cash 
-    - Credit (not yet)
+a|b|c|d|e
+:---|:---|:---:|:---:|:---:
+**Week 0 Scratch**|Problem Set 0|Scratch|[scratch](./scratch/)
+**Week 1 C**|Lab 1|Population Growth|[population](./population/)
+||Problem Set 1|Hello|[hello](./hello/)
+|||Mario|[mario-less](./mario-less/)
+|||Mario|[mario-less](./mario-more/)
+|||Cash |[Cash](./cash/)
+|||Credit|[Credit](./credit/)|no
+**Week 2 Arrays**|Lab 2|Scrabble|[scrabble](./scrabble/)
+||Problem Set 2|Readability|[Readability](./readability/)
+|||Bulbs|[Bulbs](./bulbs/)
+|||Caesar|[caesar](./caesar/)
+|||Substitution||no
+|||Wordle50|[Wordle50](./world-cup/)|no
 
-## Week 2 Arrays
-- Lab 2: Scrabble 
-- Problem Set 2
-    - Readability
-    - Bulbs
-    - Caesar
-    - Substitution (not yet)
-    - Wordle50 (not yet)
+
+
+
+
 ## Week 3 Algorithms
 - Lab 3: Sort
 - Problem Set 3:
