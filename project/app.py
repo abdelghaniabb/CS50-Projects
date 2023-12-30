@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import os
 
 from cs50 import SQL
@@ -7,7 +9,8 @@ from country_list import countries_for_language
 from werkzeug.security import check_password_hash, generate_password_hash
 
 
-from helpers import login_required, apology, strong_password, change_gpio, get_state_gpio
+from helpers import login_required, apology, strong_password
+from gpio import change_gpio, get_state_gpio
 
 
 

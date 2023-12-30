@@ -1,71 +1,49 @@
-# remote practical experiences
+# Remote Lab Monitoring
 
-## Backgrand
-- if the user didn't have an acount there is a request in witch the user can send a submition request
-- send email (not implemented yet)
+### Video Demo: [link YouTube video](https://youtu.be/fO25eBljkxs)
+### Description
 
-### Data
-~~~bash
-CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    username TEXT NOT NULL,
-    hash TEXT NOT NULL);
+The Remote Lab Monitoring system is a web-based application designed for temperature monitoring and control within a laboratory environment. Implemented on a Raspberry Pi, this system provides real-time access and interaction with lab components, focusing on features such as temperature measurement and light control.
 
-CREATE UNIQUE INDEX username ON users (username);
+- User authentication ensures secure access to the lab monitoring system. While the registration option is available for testing purposes, in a production environment, user credentials will be provided to authorized individuals, minimizing unauthorized access, after all, we don’t want for anyone to have access to control and monitor our lab. However, Registered users have the option to change their passwords, with the requirement that passwords must be at least 4 characters long, containing at least one digit and one special character.
 
 
-CREATE TABLE IF NOT EXISTS users_information (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
-    email TEXT NOT NULL,
-    establishment TEXT NOT NULL,
-    sector TEXT NOT NULL,
-    phone TEXT NOT NULL,
-    contry TEXT NOT NULL);
+- Features
+    - **Light Control:** The Light Control feature allows users to manipulate the lab's lighting by turning bulbs on and off. Implemented using switch toggles, user requests are sent to the server via the POST method, triggering Python code execution on the Raspberry Pi. The system utilizes GPIO pins to set bulb states, and a GET request retrieves the current bulb status when loading the page. 
 
-CREATE TABLE IF NOT EXISTS temperature (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    temperature NUMERIC,
-    humidity NUMERIC,
-    date DATETIME NOT NULL);
+    - **Lab Temperature:** Lab Temperature provides real-time data on the current temperature and humidity within the lab. This information is gathered using a DHT11 sensor, and measurements are stored in an SQL table for future reference.
+    
+    - **Live:** The Live View feature offers users a real-time stream of the lab environment.
 
-CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    a NUMERIC,
-    b NUMERIC);
-~~~
+    - **History:** The History page enables users to navigate through historical lab temperature and humidity values based on the date of measurement.**
 
-## Setting up the Raspberry Pi
-- [Installing Raspberry Pi OS](https://www.raspberrypi.com/software/)
-- [Set a Static IP Address on Raspberry Pi](https://www.tomshardware.com/how-to/static-ip-raspberry-pi)
-    ~~~bash
-    nano /etc/dhcpcd.conf
 
-    #profile static_eth0
-    static ip_address=
-    static routers=
-    static domain_name_servers=
-    static domain_search=
-    ~~~
+#### Setting up the Raspberry Pi
 
-- update the Raspberry Pi
+To set up the Raspberry Pi, follow these steps:
+1. [Installing Raspberry Pi OS](https://www.raspberrypi.com/software/)
+
+2. Update the Raspberry Pi and set the date
     ~~~bash
     sudo apt update
     sudo apt upgradde
-    sudo date -s "11 Nov 2023 11:00:00"
+    sudo date -s "11 Dec 2023 11:00:00"
     ~~~
 
-##	Setting up a web page for room monitoring
+3. Cabling the necessary circuits
 
-- create a table of temperature values in MySQL database
-    ~~~bash
-    CREATE TABLE IF NOT EXISTS temperature (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    temperature NUMERIC,
-    humidity NUMERIC,
-    date DATETIME NOT NULL);
-    ~~~
+    - Connect Bulbs to control over the web
+        Bulbs|Raspberry Pi pin|Relay state
+        :---:|:---:|:---:
+        bulb1 |physical 15 (GPIO pin 22)|NC (Normally open)
+        bulb2 |physical 16 (GPIO pin 23)|NC (Normally open)
+        bulb3 |physical 22 (GPIO pin 25)|NO (Normally open)
 
-- Connect Bulbs to control over the web
-    Bulbs|Raspberry Pi pin|Relay state
-    :---:|:---:|:---:
-    bulb1 |physical 15 (GPIO pin 22)|NC (Normally open)
-    bulb2 |physical 16 (GPIO pin 23)|NC (Normally open)
-    bulb3 |physical 22 (GPIO pin 25)|NO (Normally open)
+    - Read the DHT11 sensor for the temperature of the room 
+
+        DHT11 pin|Raspberry Pi pin
+        :---:|:---:
+        (+) pin|5V pin
+        (-) pin|GND
+        OUT pin |physical pin 40 (GPIO pin 21)
 
