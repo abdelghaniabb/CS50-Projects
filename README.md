@@ -22,62 +22,41 @@ a|b|c|d|e
 |||Bulbs|[Bulbs](./bulbs/)
 |||Caesar|[caesar](./caesar/)
 |||Substitution||no
-|||Wordle50|[Wordle50](./world-cup/)|no
+|||Wordle50||no
+**Week 3 Algorithms**|Lab 3|Sort|[sort](./sort/)
+||Problem Set 3|Plurality|[plurality](./plurality/)
+|||Runoff|[runoff](./runoff/)
+|||Tideman|[Tideman](./tideman/)|no
+**Week 4 Memory**|Lab 4|Smiley|[smiley](./smiley/)
+|||Volume|[volume](./volume/)
+||Problem Set 4|Filter|[filter-less](./filter-less/)
+|||Filter|[filter-more](./filter-more/)
+|||Recover|[Recover](./recover/)
+|||Reverse||no
+**Week 5 Data Structures**|Lab 5|Inheritance|[Inheritance](./inheritance/)|no
+||Problem Set 5|speller|[speller](./speller/)
+**Week 6 Python**|Lab 6|World Cup|[world-cup](./world-cup/)
+||Problem Set 6|Hello|[sentimental-hello](./sentimental-hello/)
+|||Mario|[sentimental-mario-less](./sentimental-mario-less/)
+|||Mario|[sentimental-mario-more](./sentimental-mario-more/)
+|||Cash|[sentimental-cash](./sentimental-cash/)
+|||Credit|[sentimental-credit](./sentimental-credit/)
+|||Readability|[sentimental-readability](./sentimental-readability/)
+|||DNA|[dna](./dna/)
+**week 7 SQL**|Lab 7|Songs| [Songs](./songs/)
+||Problem Set 7|Movies|[Movies](./movies/)
+|||Fiftyville|[Fiftyville](./fiftyville/)|no
+**week 8 - HTML, CSS, JavaScript**|Lab 8|Trivia| [Trivia](./trivia/)
+||Problem Set 8|Homepage| [Homepage](./homepage/)
+**Week 9 Flask**|Lab 9|Birthdays| [Birthdays](./birthdays/)
+||Problem Set 9| Finance|[Finance](./finance/)
+**Final Project**|||[Project](./project/)
 
 
 
-
-
-## Week 3 Algorithms
-- Lab 3: Sort
-- Problem Set 3:
-    - Plurality
-    - Runoff
-    - Tideman (not finished)
-## Week 4 Memory
-- Lab 4: 
-    - Smiley 
-    - Volume 
-- Problem Set 4:
-    - two version of Filter
-    - Recover
-    - Reverse (not yet)
-## Week 5 Data Structures
-- Lab 5: Inheritance (done with 4/7)
-- Problem Set 5: speller
-## Week 6 Python
-- Lab 6: World Cup
-- Problem Set 6:
-    - Hello
-    - Mario less and more
-    - Cash
-    - Credit
-    - Readability
-    - [DNA](./dna/)
-## week 7 SQL
-- Lab 7: [Songs](./songs/)
-- Problem Set 7
-    - [Movies](./movies/)
-    - [Fiftyville](./fiftyville/) (not yet)
-
-## week 8 - HTML, CSS, JavaScript
-- Lab 8: [Trivia](./trivia/)
-- Problem Set 8: [Homepage](./homepage/)
-
-## Week 9 Flask
-- Lab 9: [Birthdays](./birthdays/)
-- Problem Set 9: Finance
-
-## not yet
-
-## Week 10 Emoji
+### Week 10 Emoji
 * [Video](https://www.youtube.com/watch?v=8mAITcNt710&t=88054s)
-## Cybersecurity
+### Cybersecurity
 * [Video](https://www.youtube.com/watch?v=8mAITcNt710&t=88054s)
 
 
-- Watch a special lecture on Cybersecurity.
-- Watch Week 9's lecture and, optionally, shorts and section. Submit Lab 9 and Problem Set 9.
-- Watch Week 10's lecture.
-- Optionally watch some Seminars.
-- Submit the Final Project.
