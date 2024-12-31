@@ -182,16 +182,17 @@ def light():
 @app.route("/gpio1", methods=["GET", "POST"])
 @login_required
 def gpio1():
+    pin = 22
     if request.method == "POST":
         if request.form.get('status') == "true":
-            """turn ON the gpio 15"""
-            change_gpio(15, 1)
+            """turn ON the gpio 22"""
+            change_gpio(pin, 1)
         else:
-            change_gpio(15, 0)
+            change_gpio(pin, 0)
         
         return "done"
     else:
-        if get_state_gpio(15):
+        if get_state_gpio(pin):
             status = "true"
         else:
             status = "false"
@@ -200,16 +201,17 @@ def gpio1():
 @app.route("/gpio2", methods=["GET", "POST"])
 @login_required
 def gpio2():
+    pin = 23
     if request.method == "POST":
         if request.form.get('status') == "true":
-            """turn ON the gpio 16"""
-            change_gpio(16, 1)
+            """turn ON the gpio 23"""
+            change_gpio(pin, 1)
         else:
-            change_gpio(16, 0)
+            change_gpio(pin, 0)
         
         return "done"
     else:
-        if get_state_gpio(16):
+        if get_state_gpio(pin):
             status = "true"
         else:
             status = "false"
@@ -218,16 +220,17 @@ def gpio2():
 @app.route("/gpio3", methods=["GET", "POST"])
 @login_required
 def gpio3():
+    pin = 25
     if request.method == "POST":
         if request.form.get('status') == "true":
-            """turn ON the gpio 22"""
-            change_gpio(22, 1)
+            """turn ON the gpio 25"""
+            change_gpio(pin, 1)
         else:
-            change_gpio(22, 0)
+            change_gpio(pin, 0)
         
         return "done"
     else:
-        if get_state_gpio(22):
+        if get_state_gpio(pin):
             status = "true"
         else:
             status = "false"
